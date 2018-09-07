@@ -1,0 +1,19 @@
+services:
+    MKebza\Sitemap\Service\LocationCollector:
+        arguments:
+            $generators: !tagged mkebza_sitemap.generator
+
+    MKebza\Sitemap\Command\GenerateCommand:
+        arguments:
+            $sitemap: '@MKebza\Sitemap\Service\SitemapRenderer'
+            $defaultXmlFilePath: '%kernel.project_dir%/public/sitemap.xml'
+        tags: ['console.command']
+
+    MKebza\Sitemap\Service\LocationRenderer:
+        arguments:
+            $baseUrl: '%mkebza_sitemap.base_url%'
+
+    MKebza\Sitemap\Service\SitemapRenderer:
+        arguments:
+            $collector: '@MKebza\Sitemap\Service\LocationCollector'
+            $locationRenderer: '@MKebza\Sitemap\Service\LocationRenderer'
