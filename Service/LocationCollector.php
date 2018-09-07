@@ -30,7 +30,16 @@ class LocationCollector
     {
         foreach ($this->generators as $generator) {
             foreach ($generator->generate() as $item) {
-                yield $item;
+                if ($item instanceof Location) {
+                    yield $item;
+                } else {
+                    throw new \InvalidArgumentException(sprintf(
+                        '%s::generate() must always return instance of %s, instace of %s returned',
+                        SitemapLocationGeneratorInterface::class,
+                        Location::class,
+                        (is_object($item) ? get_class($item) : gettype($item))
+                    ));
+                }
             }
         }
     }

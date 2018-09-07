@@ -49,6 +49,10 @@ class Location
         ?ChangeFrequency $changeFrequency = null,
         ?float $priority = 0.5
     ) {
+        if ($priority <= 0.0 || $priority > 1.0) {
+            throw new \OutOfRangeException(sprintf('Priority has to be number between 0.0 and 1.0, you have provided %.2f', $priority));
+        }
+
         $this->location = $location;
         $this->lastModification = $lastModification;
         $this->changeFrequency = $changeFrequency;

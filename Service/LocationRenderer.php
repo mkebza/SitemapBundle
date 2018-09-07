@@ -25,7 +25,10 @@ class LocationRenderer
      */
     public function __construct(?string $baseUrl)
     {
-        $this->baseUrl = rtrim($baseUrl, '/');
+        $this->baseUrl = null;
+        if (null !== $baseUrl) {
+            $this->baseUrl = rtrim($baseUrl, '/');
+        }
     }
 
     public function render(Location $location, \XMLWriter $writer)

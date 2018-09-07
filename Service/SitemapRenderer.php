@@ -35,7 +35,7 @@ class SitemapRenderer
         $this->locationRenderer = $locationRenderer;
     }
 
-    public function render()
+    public function render(): string
     {
         $writer = $this->createXmlWriter();
 
