@@ -28,7 +28,7 @@ class LocationRendererTest extends TestCase
 
         $this->assertNotFalse($xml);
         $this->assertInstanceOf(\SimpleXMLElement::class, $xml);
-        $this->assertSame('test_url', (string)$xml->loc);
+        $this->assertSame('test_url', (string) $xml->loc);
         $this->assertSame(0.5, (float) $xml->priority);
     }
 
@@ -46,9 +46,9 @@ class LocationRendererTest extends TestCase
 
         $this->assertNotFalse($xml);
         $this->assertInstanceOf(\SimpleXMLElement::class, $xml);
-        $this->assertSame('test_url', (string)$xml->loc);
-        $this->assertSame($date->format('Y-m-dTH:i'), (string)$xml->lastmod);
-        $this->assertSame(ChangeFrequency::YEARLY()->getValue(), (string)$xml->changefreq);
+        $this->assertSame('test_url', (string) $xml->loc);
+        $this->assertSame($date->format('Y-m-dTH:i'), (string) $xml->lastmod);
+        $this->assertSame(ChangeFrequency::YEARLY()->getValue(), (string) $xml->changefreq);
         $this->assertSame(0.7, (float) $xml->priority);
     }
 

@@ -45,7 +45,7 @@ class LocationRenderer
         }
 
         if (null !== $location->getChangeFrequency()) {
-            $writer->writeElement('changefreq', $location->getChangeFrequency()->getValue());
+            $writer->writeElement('changefreq', (string) $location->getChangeFrequency()->getValue());
         }
         $writer->endElement();
     }
