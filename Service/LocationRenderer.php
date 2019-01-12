@@ -37,7 +37,7 @@ class LocationRenderer
         $writer->writeElement('loc', $this->getUrl($location->getLocation()));
 
         if (null !== $location->getLastModification()) {
-            $writer->writeElement('lastmod', $location->getLastModification()->format('Y-m-dTH:i'));
+            $writer->writeElement('lastmod', $location->getLastModification()->format('Y-m-d\TH:i:sP'));
         }
 
         if (null !== $location->getPriority()) {
